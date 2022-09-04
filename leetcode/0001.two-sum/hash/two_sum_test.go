@@ -1,4 +1,4 @@
-package one_hash
+package hash
 
 import (
 	"testing"
