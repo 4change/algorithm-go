@@ -1,4 +1,4 @@
-package problem0028
+package problem0283
 
 func moveZeroes(nums []int)  {
     cnt := 0
