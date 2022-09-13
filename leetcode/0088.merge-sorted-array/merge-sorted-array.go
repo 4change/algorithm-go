@@ -22,7 +22,7 @@ func merge_1(nums1 []int, m int, nums2 []int, n int)  {
 
 func merge_2(nums1 []int, m int, nums2 []int, n int)  {
     var i = m - 1
-    var j = n - 1
+    var j = n - 1           // nums2 数组的最后一个元素的下标
     var cnt = m + n -1      // nums1 数组的最后一个元素的下标
 
     for i >= 0 || j >= 0 {
