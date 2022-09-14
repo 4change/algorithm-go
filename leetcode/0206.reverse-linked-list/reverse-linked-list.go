@@ -1,17 +1,16 @@
 package problem0206
 
 func reverseList(head *ListNode) *ListNode {
-	curr := head
-	var prev *ListNode
+	var help *ListNode
 
-	for curr != nil {
-		nextTemp := curr.Next
-		curr.Next = prev
-		prev = curr
-		curr = nextTemp
+	for head != nil {
+		next := head.Next
+		head.Next = help
+		help = head
+		head = next
 	}
-
-	return prev
+	
+	return help
 }
 
 // ListNode 是链接节点
