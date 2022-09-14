@@ -26,7 +26,7 @@ func merge_2(nums1 []int, m int, nums2 []int, n int)  {
     var cnt = m + n -1      // nums1 数组的最后一个元素的下标
 
     for i >= 0 || j >= 0 {
-        if j < 0 || (i >= 0 && nums1[i] > nums2[j]) {
+        if j < 0 || (i >= 0 && nums1[i] > nums2[j]) {   // 注意边界条件的判定
             nums1[cnt] = nums1[i]
             i--
         } else {
