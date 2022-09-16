@@ -18,3 +18,18 @@ func hasCycle(head *ListNode) bool {
 	// 通过快慢指针是否相等判定链表是否有环
 	return slow == fast
 }
+
+func hasCycle_1(head *ListNode) bool {
+    fast, slow := head, head
+
+    for (fast != nil && fast.Next != nil) {
+        fast = fast.Next.Next
+        slow = slow.Next
+
+        if (fast == slow) {
+            return true
+        }
+    }
+
+    return false
+}
