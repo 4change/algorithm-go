@@ -6,16 +6,16 @@ import (
 
 func calculate(s string) int {
 	s += " "
-	tokens := []string{}	// 存放中缀表达式的栈
+	tokens := []string{}	// 存放后缀表达式的栈
 	ops := []rune{}			// 存放操作符的栈
-	number := ""
+	number := ""			// 存放字符串中的数字
 	for _, char := range s {
-		if (char >= '0' && char <= '9') {	// 字符串中数字的处理
+		if (char >= '0' && char <= '9') {	// 字符串中数字的拼接
 			number += string(char)
 			continue
 		} else {
-			if number != "" {	// 字符串中数字的处理
-				tokens = append(tokens, number)	// 数字放入中缀表达式栈
+			if number != "" {	// 字符串中数字的处理——数字放入后缀表达式栈
+				tokens = append(tokens, number)
 				number = ""
 			}
 
@@ -25,16 +25,16 @@ func calculate(s string) int {
 
 			curRank := getRank(char)	// 字符串中操作符的处理
 			for (len(ops) > 0 && getRank(ops[len(ops) - 1]) >= curRank) {
-				// 操作符栈中栈顶元素优先级比当前元素优先级高——弹出操作符栈的栈顶元素，并将其入栈到中缀表达式栈
+				// 操作符栈中栈顶元素优先级比当前元素优先级高——弹出操作符栈的栈顶元素，并将其入栈到后缀表达式栈
 				tokens = append(tokens, string(ops[len(ops) - 1]))
 				ops = ops[:len(ops) - 1]
 			}
-			// 操作符放入操作符栈
+			// 操作符栈中栈顶元素优先级比当前元素优先级低——当前元素入栈操作符栈
 			ops = append(ops, char)
 		}
 	}
 
-	// 操作符栈中所有元素弹出，并入栈到中缀表达式栈
+	// 操作符栈中所有元素弹出，并入栈到后缀表达式栈
 	for (len(ops) > 0) {
 		tokens = append(tokens, string(ops[len(ops) - 1]))
 		ops = ops[:len(ops) - 1]
